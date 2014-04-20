@@ -9,6 +9,6 @@ namespace Madtrix.Factories
 {
     public interface IFileLoggerFactory
     {
-        public IFileLogger Create();
+        IFileLogger Create();
     }
 }
