@@ -15,8 +15,8 @@ namespace Madtrix.Factories
         /// <summary>
         /// Creates the game object.
         /// </summary>
-        /// <param name="FallingObjectType">Type of the falling object.</param>
+        /// <param name="fallingObjectType">Type of the falling object.</param>
         /// <returns>GameObjectBase</returns>
-        GameObjectBase CreateGameObject(int FallingObjectType);
+        GameObjectBase CreateGameObject(int fallingObjectType);
     }
 }

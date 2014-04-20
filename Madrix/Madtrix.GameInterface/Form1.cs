@@ -13,23 +13,38 @@ using Madtrix.Factories.GameObjects;
 
 namespace Madtrix.GameInterface
 {
+    /// <summary>
+    /// This is the Form1 class.
+    /// </summary>
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Form1"/> class.
+        /// </summary>
         public Form1()
         {
             this.InitializeComponent();
         }
 
-        List<GameObjectBase> fallingObjects = new List<GameObjectBase>();
-        Random random = new Random(80);
-        Random random2 = new Random(90);
+        /// <summary>
+        /// The falling objects
+        /// </summary>
+        private IList<GameObjectBase> fallingObjects = new List<GameObjectBase>();
+
+        /// <summary>
+        /// The random
+        /// </summary>
+        private Random random = new Random(80);
+
+        /// <summary>
+        /// The random2
+        /// </summary>
+        private Random random2 = new Random(90);
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            timer1.Start();
-
-
-            IGameObjectFactory factory = LoadFactory();
+            this.timer1.Start();
+            IGameObjectFactory factory = this.LoadFactory();
             GameObjectBase gameObject = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject.Location = new System.Drawing.Point(55, 55);
 
@@ -57,8 +72,6 @@ namespace Madtrix.GameInterface
             GameObjectBase gameObject9 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject9.Location = new System.Drawing.Point(570, 70);
 
-
-            
             this.Controls.Add(gameObject);
             this.fallingObjects.Add(gameObject);
             this.Controls.Add(gameObject2);
@@ -84,45 +97,44 @@ namespace Madtrix.GameInterface
             // load factory through setting
             var assembly = Assembly.LoadFrom("Madtrix.Factories.dll");
             return (IGameObjectFactory)assembly.CreateInstance("Madtrix.Factories.FallingObjectFactory");
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             foreach (var item in this.fallingObjects)
             {
-                int num1 = random.Next(55, 700);
-                int num2 = random2.Next(55, 120);
+                int num1 = this.random.Next(55, 700);
+                int num2 = this.random2.Next(55, 120);
                 Rectangle r = new Rectangle(num1, num2, 50, 50);
 
-                
-                
-                if (pictureBox1.Bounds.IntersectsWith(item.Bounds))
+                if (this.pictureBox1.Bounds.IntersectsWith(item.Bounds))
                 {
-                    while (intersects(r))
+                    while (this.Intersects(r))
                     {
-                        num1 = random.Next(55, 700);
-                        num2 = random2.Next(55, 120);
+                        num1 = this.random.Next(55, 700);
+                        num2 = this.random2.Next(55, 120);
                         r = new Rectangle(num1, num2, 50, 50);
                     }
-                    
+
                     item.Location = new Point(num1, num2);
                 }
                 else
+                {
                     item.Location = new Point(item.Location.X, item.Location.Y + 2);
+                }
             }
-                
         }
 
-        private bool intersects(Rectangle r)
+        private bool Intersects(Rectangle r)
         {
             if (this.fallingObjects.Where(a => a.Bounds.IntersectsWith(r)).Count() > 0)
+            {
                 return true;
+            }
             else
+            {
                 return false;
-
+            }
         }
-
-         
     }
 }

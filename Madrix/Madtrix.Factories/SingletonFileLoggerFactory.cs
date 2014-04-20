@@ -7,7 +7,10 @@ using Madtrix.Factories.Logging;
 
 namespace Madtrix.Factories
 {
-    class SingletonFileLoggerFactory : IFileLoggerFactory
+    /// <summary>
+    /// This is the SingletonFileLoggerFactory class.
+    /// </summary>
+    public class SingletonFileLoggerFactory : IFileLoggerFactory
     {
         public Logging.IFileLogger Create()
         {

@@ -6,13 +6,16 @@ using System.Windows.Forms;
 
 namespace Madtrix.GameInterface
 {
-    static class Program
+    /// <summary>
+    /// This is the Program class
+    /// </summary>
+    public static class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

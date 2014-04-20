@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Madtrix.Factories.Logging
 {
+    /// <summary>
+    /// This is the BaseFileLogger class.
+    /// </summary>
     public class BaseFileLogger : IFileLogger
     {
         public string FilePath { get; set; }
@@ -19,7 +22,5 @@ namespace Madtrix.Factories.Logging
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

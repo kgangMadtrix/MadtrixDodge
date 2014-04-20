@@ -1,6 +1,6 @@
 ﻿namespace Madtrix.GameInterface
 {
-    partial class Form1
+    public partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -65,7 +66,5 @@
 
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
-
     }
 }
-
