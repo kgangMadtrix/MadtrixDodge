@@ -12,14 +12,25 @@ namespace Madtrix.Factories
     {
         public GameObjects.GameObjectBase CreateGameObject(int FallingObjectTypeId)
         {
-            FallingObjectBase fallingObjectType = (FallingObjectBase)FallingObjectTypes[FallingObjectTypeId];
-            return fallingObjectType;
+
+            switch (FallingObjectTypeId)
+            {
+                case (int)FallingObjectType.Raindrop:
+                    return CreateRaindrop();
+                default:
+                    return null;
+            }
         }
 
-        private Dictionary<int, FallingObjectBase> FallingObjectTypes = new Dictionary<int, FallingObjectBase>
+        private GameObjects.GameObjectBase CreateRaindrop()
         {
-            {1, new Raindrop()}
-        };
+            var fallingObject = new Raindrop();
+            fallingObject.Size = new System.Drawing.Size(50, 50);
+
+            fallingObject.ImageLocation = @"C:\Users\Madtrix\Documents\Visual Studio 2012\Projects\Madrix\Madtrix.GameInterface\images\enemy.png";
+            return fallingObject;
+        }
+
 
     }
 }
