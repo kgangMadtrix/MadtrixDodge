@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Madtrix.Factories
 {
+
     public class DodgingObjectFactory : IGameObjectFactory
     {
         public GameObjects.GameObjectBase CreateGameObject()

@@ -8,5 +8,10 @@ namespace Madtrix.Factories.Logging
 {
     public interface IFileLogger
     {
+        
+
+        void LogToFile(string value);
+
+        void CloseFile();
     }
 }
