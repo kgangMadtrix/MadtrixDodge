@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Madtrix.Factories.GameObjects
 {
-    public abstract class FallingObjectBase:GameObjectBase
+    /// <summary>
+    /// This is a FallingObjectBase class
+    /// </summary>
+    public abstract class FallingObjectBase : GameObjectBase
     {
     }
 }

@@ -17,7 +17,7 @@ namespace Madtrix.GameInterface
     {
         public Form1()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         List<GameObjectBase> fallingObjects = new List<GameObjectBase>();
@@ -60,28 +60,28 @@ namespace Madtrix.GameInterface
 
             
             this.Controls.Add(gameObject);
-            fallingObjects.Add(gameObject);
+            this.fallingObjects.Add(gameObject);
             this.Controls.Add(gameObject2);
-            fallingObjects.Add(gameObject2);
+            this.fallingObjects.Add(gameObject2);
             this.Controls.Add(gameObject3);
-            fallingObjects.Add(gameObject3);
+            this.fallingObjects.Add(gameObject3);
             this.Controls.Add(gameObject4);
-            fallingObjects.Add(gameObject4);
+            this.fallingObjects.Add(gameObject4);
             this.Controls.Add(gameObject5);
-            fallingObjects.Add(gameObject5);
+            this.fallingObjects.Add(gameObject5);
             this.Controls.Add(gameObject6);
-            fallingObjects.Add(gameObject6);
+            this.fallingObjects.Add(gameObject6);
             this.Controls.Add(gameObject7);
-            fallingObjects.Add(gameObject7);
+            this.fallingObjects.Add(gameObject7);
             this.Controls.Add(gameObject8);
-            fallingObjects.Add(gameObject8);
+            this.fallingObjects.Add(gameObject8);
             this.Controls.Add(gameObject9);
-            fallingObjects.Add(gameObject9);
+            this.fallingObjects.Add(gameObject9);
         }
 
         private IGameObjectFactory LoadFactory()
         {
-            //load factory through setting
+            // load factory through setting
             var assembly = Assembly.LoadFrom("Madtrix.Factories.dll");
             return (IGameObjectFactory)assembly.CreateInstance("Madtrix.Factories.FallingObjectFactory");
 
@@ -89,15 +89,15 @@ namespace Madtrix.GameInterface
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            foreach (var item in fallingObjects)
+            foreach (var item in this.fallingObjects)
             {
-                int num1 = random.Next(55,700);
-                int num2 = random2.Next(55,120);
-                Rectangle r = new Rectangle(num1,num2,50,50);
+                int num1 = random.Next(55, 700);
+                int num2 = random2.Next(55, 120);
+                Rectangle r = new Rectangle(num1, num2, 50, 50);
 
                 
                 
-                if(pictureBox1.Bounds.IntersectsWith(item.Bounds))
+                if (pictureBox1.Bounds.IntersectsWith(item.Bounds))
                 {
                     while (intersects(r))
                     {
@@ -116,7 +116,7 @@ namespace Madtrix.GameInterface
 
         private bool intersects(Rectangle r)
         {
-            if (fallingObjects.Where(a => a.Bounds.IntersectsWith(r)).Count() > 0)
+            if (this.fallingObjects.Where(a => a.Bounds.IntersectsWith(r)).Count() > 0)
                 return true;
             else
                 return false;

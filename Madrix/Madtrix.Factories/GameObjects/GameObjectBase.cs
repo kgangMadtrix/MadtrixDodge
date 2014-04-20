@@ -7,8 +7,10 @@ using System.Windows.Forms;
 
 namespace Madtrix.Factories.GameObjects
 {
+    /// <summary>
+    /// This is a GameObjectBase class.
+    /// </summary>
     public abstract class GameObjectBase : PictureBox
-    {
-        
+    {      
     }
 }

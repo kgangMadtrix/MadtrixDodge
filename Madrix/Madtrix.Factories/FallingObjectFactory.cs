@@ -8,20 +8,31 @@ using Madtrix.Factories.GameObjects;
 
 namespace Madtrix.Factories
 {
-    public class FallingObjectFactory:IGameObjectFactory
+    /// <summary>
+    /// This is my falling object factory
+    /// </summary>
+    public class FallingObjectFactory : IGameObjectFactory
     {
-        public GameObjects.GameObjectBase CreateGameObject(int FallingObjectTypeId)
+        /// <summary>
+        /// Creates the game object.
+        /// </summary>
+        /// <param name="fallingObjectTypeId">The falling object type identifier.</param>
+        /// <returns>A game object base</returns>
+        public GameObjects.GameObjectBase CreateGameObject(int fallingObjectTypeId)
         {
-
-            switch (FallingObjectTypeId)
+            switch (fallingObjectTypeId)
             {
                 case (int)FallingObjectType.Raindrop:
-                    return CreateRaindrop();
+                    return this.CreateRaindrop();
                 default:
                     return null;
             }
         }
 
+        /// <summary>
+        /// Creates the raindrop.
+        /// </summary>
+        /// <returns>A game object base</returns>
         private GameObjects.GameObjectBase CreateRaindrop()
         {
             var fallingObject = new Raindrop();
@@ -30,7 +41,5 @@ namespace Madtrix.Factories
             fallingObject.ImageLocation = @"C:\Users\Madtrix\Documents\Visual Studio 2012\Projects\Madrix\Madtrix.GameInterface\images\enemy.png";
             return fallingObject;
         }
-
-
     }
 }

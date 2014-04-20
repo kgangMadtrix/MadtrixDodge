@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Madtrix.Factories.GameObjects
 {
-    public class Raindrop:FallingObjectBase
-    {
-        
+    /// <summary>
+    /// This is the Raindrop class.
+    /// </summary>
+    public class Raindrop : FallingObjectBase
+    {        
     }
 }

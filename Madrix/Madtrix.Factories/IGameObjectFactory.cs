@@ -7,8 +7,16 @@ using Madtrix.Factories.GameObjects;
 
 namespace Madtrix.Factories
 {
+    /// <summary>
+    /// This is the IGameObjectFactory interface
+    /// </summary>
     public interface IGameObjectFactory
     {
+        /// <summary>
+        /// Creates the game object.
+        /// </summary>
+        /// <param name="FallingObjectType">Type of the falling object.</param>
+        /// <returns>GameObjectBase</returns>
         GameObjectBase CreateGameObject(int FallingObjectType);
     }
 }

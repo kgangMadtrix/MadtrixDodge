@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Madtrix.Factories.Logging
 {
-    public class BaseFileLogger:IFileLogger
+    public class BaseFileLogger : IFileLogger
     {
         public string FilePath { get; set; }
 

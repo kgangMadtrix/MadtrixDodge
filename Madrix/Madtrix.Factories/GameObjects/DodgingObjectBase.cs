@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Madtrix.Factories.GameObjects
 {
-    public abstract class DodgingObjectBase:GameObjectBase
+    /// <summary>
+    /// This is a DodgingObjectBase class.
+    /// </summary>
+    public abstract class DodgingObjectBase : GameObjectBase
     {
     }
 }

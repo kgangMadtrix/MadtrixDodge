@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Madtrix.Factories.Logging
 {
-    public class FileLoggerSingleton:BaseFileLogger
+    public class FileLoggerSingleton : BaseFileLogger
     {
         private FileLoggerSingleton()
         { 
@@ -23,7 +23,7 @@ namespace Madtrix.Factories.Logging
 
         private class Nested
         {
-            //tell c# not to mark as beforefiledinit
+            // tell c# not to mark as beforefiledinit
             static Nested()
             { 
             
