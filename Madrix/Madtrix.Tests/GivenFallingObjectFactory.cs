@@ -16,8 +16,19 @@ namespace Madtrix.Tests
         public void ThenReturnRaindropObject()
         {
             var fallingObjectFactory = new FallingObjectFactory();
-            var fallingGameObject = fallingObjectFactory.CreateGameObject();
+            var fallingGameObject = fallingObjectFactory.CreateGameObject((int)FallingObjectType.Raindrop);
             Assert.IsInstanceOf(typeof(Raindrop), fallingGameObject, "The falling object factory did not return a raindrop");
         }
+        [Test]
+        public void TheReturnFridgeObject()
+        {
+            var fallingObjectFactory = new FallingObjectFactory();
+            var fallingGameObject = fallingObjectFactory.CreateGameObject(2);
+            Assert.IsInstanceOf(typeof(Fridge), fallingGameObject, "The falling object factory did not return a fridge");
+        }
+    }
+
+    public class Fridge
+    {
     }
 }

@@ -9,7 +9,8 @@ namespace Madtrix.Factories
 
     public class DodgingObjectFactory : IGameObjectFactory
     {
-        public GameObjects.GameObjectBase CreateGameObject()
+
+        public GameObjects.GameObjectBase CreateGameObject(int FallingObjectType)
         {
             throw new NotImplementedException();
         }

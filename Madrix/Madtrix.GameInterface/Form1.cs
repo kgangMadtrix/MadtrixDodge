@@ -30,31 +30,31 @@ namespace Madtrix.GameInterface
 
 
             IGameObjectFactory factory = LoadFactory();
-            GameObjectBase gameObject = factory.CreateGameObject();
+            GameObjectBase gameObject = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject.Location = new System.Drawing.Point(55, 55);
 
-            GameObjectBase gameObject2 = factory.CreateGameObject();
+            GameObjectBase gameObject2 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject2.Location = new System.Drawing.Point(120, 120);
 
-            GameObjectBase gameObject3 = factory.CreateGameObject();
+            GameObjectBase gameObject3 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject3.Location = new System.Drawing.Point(200, 55);
 
-            GameObjectBase gameObject4 = factory.CreateGameObject();
+            GameObjectBase gameObject4 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject4.Location = new System.Drawing.Point(300, 55);
 
-            GameObjectBase gameObject5 = factory.CreateGameObject();
+            GameObjectBase gameObject5 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject5.Location = new System.Drawing.Point(400, 120);
 
-            GameObjectBase gameObject6 = factory.CreateGameObject();
+            GameObjectBase gameObject6 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject6.Location = new System.Drawing.Point(500, 70);
 
-            GameObjectBase gameObject7 = factory.CreateGameObject();
+            GameObjectBase gameObject7 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject7.Location = new System.Drawing.Point(600, 120);
 
-            GameObjectBase gameObject8 = factory.CreateGameObject();
+            GameObjectBase gameObject8 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject8.Location = new System.Drawing.Point(700, 70);
 
-            GameObjectBase gameObject9 = factory.CreateGameObject();
+            GameObjectBase gameObject9 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
             gameObject9.Location = new System.Drawing.Point(570, 70);
 
 

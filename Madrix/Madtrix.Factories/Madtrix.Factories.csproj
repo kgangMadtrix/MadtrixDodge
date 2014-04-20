@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DodgingObjectFactory.cs" />
     <Compile Include="FallingObjectFactory.cs" />
+    <Compile Include="FallingObjectType.cs" />
     <Compile Include="GameObjects\DodgingObjectBase.cs">
       <SubType>Component</SubType>
     </Compile>

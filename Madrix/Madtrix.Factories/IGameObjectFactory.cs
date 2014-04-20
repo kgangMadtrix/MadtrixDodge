@@ -9,6 +9,6 @@ namespace Madtrix.Factories
 {
     public interface IGameObjectFactory
     {
-        GameObjectBase CreateGameObject();
+        GameObjectBase CreateGameObject(int FallingObjectType);
     }
 }

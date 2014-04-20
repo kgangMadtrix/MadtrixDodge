@@ -10,13 +10,16 @@ namespace Madtrix.Factories
 {
     public class FallingObjectFactory:IGameObjectFactory
     {
-        public GameObjects.GameObjectBase CreateGameObject()
+        public GameObjects.GameObjectBase CreateGameObject(int FallingObjectTypeId)
         {
-            var fallingObject = new Raindrop();
-            fallingObject.Size = new System.Drawing.Size(50, 50);
-            
-            fallingObject.ImageLocation = @"C:\Users\Madtrix\Documents\Visual Studio 2012\Projects\Madrix\Madtrix.GameInterface\images\enemy.png";
-            return fallingObject;
+            FallingObjectBase fallingObjectType = (FallingObjectBase)FallingObjectTypes[FallingObjectTypeId];
+            return fallingObjectType;
         }
+
+        private Dictionary<int, FallingObjectBase> FallingObjectTypes = new Dictionary<int, FallingObjectBase>
+        {
+            {1, new Raindrop()}
+        };
+
     }
 }
