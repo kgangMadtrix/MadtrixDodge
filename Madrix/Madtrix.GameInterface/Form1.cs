@@ -45,55 +45,17 @@ namespace Madtrix.GameInterface
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.timer1.Start();
             IGameObjectFactory factory = this.LoadFactory();
             var factoryController = new FactoryController();
+            int numberOfFallingObject = Convert.ToInt32(ConfigurationManager.AppSettings["NumberOfFallingObjects"]);
+            this.fallingObjects = factoryController.CreateGameObjects(factory, 1, numberOfFallingObject);
 
-            GameObjectBase gameObject = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject.Location = new System.Drawing.Point(55, 55);
-
-            GameObjectBase gameObject2 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject2.Location = new System.Drawing.Point(120, 120);
-
-            GameObjectBase gameObject3 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject3.Location = new System.Drawing.Point(200, 55);
-
-            GameObjectBase gameObject4 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject4.Location = new System.Drawing.Point(300, 55);
-
-            GameObjectBase gameObject5 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject5.Location = new System.Drawing.Point(400, 120);
-
-            GameObjectBase gameObject6 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject6.Location = new System.Drawing.Point(500, 70);
-
-            GameObjectBase gameObject7 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject7.Location = new System.Drawing.Point(600, 120);
-
-            GameObjectBase gameObject8 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject8.Location = new System.Drawing.Point(700, 70);
-
-            GameObjectBase gameObject9 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
-            gameObject9.Location = new System.Drawing.Point(570, 70);
-
-            this.Controls.Add(gameObject);
-            this.fallingObjects.Add(gameObject);
-            this.Controls.Add(gameObject2);
-            this.fallingObjects.Add(gameObject2);
-            this.Controls.Add(gameObject3);
-            this.fallingObjects.Add(gameObject3);
-            this.Controls.Add(gameObject4);
-            this.fallingObjects.Add(gameObject4);
-            this.Controls.Add(gameObject5);
-            this.fallingObjects.Add(gameObject5);
-            this.Controls.Add(gameObject6);
-            this.fallingObjects.Add(gameObject6);
-            this.Controls.Add(gameObject7);
-            this.fallingObjects.Add(gameObject7);
-            this.Controls.Add(gameObject8);
-            this.fallingObjects.Add(gameObject8);
-            this.Controls.Add(gameObject9);
-            this.fallingObjects.Add(gameObject9);
+            foreach (var item in this.fallingObjects)
+            {
+                this.Controls.Add(item);
+            }
+            
+            this.timer1.Start();
         }
 
         private IGameObjectFactory LoadFactory()
@@ -128,6 +90,7 @@ namespace Madtrix.GameInterface
                 }
             }
         }
+
 
         private bool Intersects(Rectangle r)
         {

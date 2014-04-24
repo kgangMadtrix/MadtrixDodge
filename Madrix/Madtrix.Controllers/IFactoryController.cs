@@ -12,6 +12,8 @@ namespace Madtrix.Controllers
     {
         IGameObjectFactory Getfactory(string factoryDll, string typeName);
 
-        GameObjectBase CreateGameObject(IGameObjectFactory gameFactory, int fallingObjectType);
+        GameObjectBase CreateGameObject(IGameObjectFactory gameFactory, int objectTypeId);
+
+        
     }
 }
