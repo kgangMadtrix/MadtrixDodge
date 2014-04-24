@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Madtrix.Factories;
 using Madtrix.Factories.GameObjects;
+using System.Configuration;
+using Madtrix.Controllers;
 
 namespace Madtrix.GameInterface
 {
@@ -45,31 +47,33 @@ namespace Madtrix.GameInterface
         {
             this.timer1.Start();
             IGameObjectFactory factory = this.LoadFactory();
-            GameObjectBase gameObject = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            var factoryController = new FactoryController();
+
+            GameObjectBase gameObject = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject.Location = new System.Drawing.Point(55, 55);
 
-            GameObjectBase gameObject2 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject2 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject2.Location = new System.Drawing.Point(120, 120);
 
-            GameObjectBase gameObject3 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject3 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject3.Location = new System.Drawing.Point(200, 55);
 
-            GameObjectBase gameObject4 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject4 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject4.Location = new System.Drawing.Point(300, 55);
 
-            GameObjectBase gameObject5 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject5 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject5.Location = new System.Drawing.Point(400, 120);
 
-            GameObjectBase gameObject6 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject6 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject6.Location = new System.Drawing.Point(500, 70);
 
-            GameObjectBase gameObject7 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject7 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject7.Location = new System.Drawing.Point(600, 120);
 
-            GameObjectBase gameObject8 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject8 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject8.Location = new System.Drawing.Point(700, 70);
 
-            GameObjectBase gameObject9 = factory.CreateGameObject((int)FallingObjectType.Raindrop);
+            GameObjectBase gameObject9 = factoryController.CreateGameObject(factory, (int)FallingObjectType.Raindrop);
             gameObject9.Location = new System.Drawing.Point(570, 70);
 
             this.Controls.Add(gameObject);
@@ -95,8 +99,8 @@ namespace Madtrix.GameInterface
         private IGameObjectFactory LoadFactory()
         {
             // load factory through setting
-            var assembly = Assembly.LoadFrom("Madtrix.Factories.dll");
-            return (IGameObjectFactory)assembly.CreateInstance("Madtrix.Factories.FallingObjectFactory");
+            var factoryController = new FactoryController();
+            return factoryController.Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["FallingObjectFactoryTypeName"]);
         }
 
         private void timer1_Tick(object sender, EventArgs e)

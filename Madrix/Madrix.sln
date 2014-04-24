@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madtrix.GameInterface", "Ma
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madtrix.Tests", "Madtrix.Tests\Madtrix.Tests.csproj", "{037B5FD8-3C8C-4A09-A546-7F23C14E4548}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madtrix.Controllers", "Madtrix.Controllers\Madtrix.Controllers.csproj", "{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{037B5FD8-3C8C-4A09-A546-7F23C14E4548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{037B5FD8-3C8C-4A09-A546-7F23C14E4548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{037B5FD8-3C8C-4A09-A546-7F23C14E4548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

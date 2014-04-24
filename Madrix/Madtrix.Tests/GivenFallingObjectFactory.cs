@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Madtrix.Factories;
@@ -35,6 +36,14 @@ namespace Madtrix.Tests
             var fallingObjectFactory = new FallingObjectFactory();
             var fallingGameObject = fallingObjectFactory.CreateGameObject((int)FallingObjectType.Raindrop);
             Assert.IsNotInstanceOf(typeof(Fridge), fallingGameObject, "The falling object factory did not return a fridge");
+        }
+
+        [Test]
+        public void Then_load_it_throughSettings()
+        {
+            var assembly = Assembly.LoadFrom("Madtrix.Factories.dll");
+            var fallingObjectFactory = (IGameObjectFactory)assembly.CreateInstance("Madtrix.Factories.FallingObjectFactory");
+            Assert.IsInstanceOf(typeof(FallingObjectFactory), fallingObjectFactory, "The falling did not load through settings");
         }
     }
 
