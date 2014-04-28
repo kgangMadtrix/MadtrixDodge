@@ -10,7 +10,7 @@ namespace Madtrix.Factories.GameObjects
     /// <summary>
     /// This is a GameObjectBase class.
     /// </summary>
-    public abstract class GameObjectBase : PictureBox
+    public abstract class GameObjectBase : PictureBox, IGameObject
     {      
     }
 }

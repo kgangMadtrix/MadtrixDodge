@@ -16,7 +16,7 @@ namespace Madtrix.Controllers
         /// <summary>
         /// The random
         /// </summary>
-        private Random random = new Random(80);
+        private Random random = new Random();
 
         /// <summary>
         /// The random2
@@ -48,20 +48,20 @@ namespace Madtrix.Controllers
             return Initialize(gameObjects);
         }
 
-        private IList<Madtrix.Factories.GameObjects.GameObjectBase> Initialize(IList<Madtrix.Factories.GameObjects.GameObjectBase> gameObjects)
+        public IList<Madtrix.Factories.GameObjects.GameObjectBase> Initialize(IList<Madtrix.Factories.GameObjects.GameObjectBase> gameObjects)
         {
             foreach (var item in gameObjects)
             {
-                int num1 = this.random.Next(55, 700);
-                int num2 = this.random2.Next(55, 120);
+                int num1 = this.random.Next(0, 450);
+                int num2 = this.random2.Next(0, 120);
                 Rectangle r = new Rectangle(num1, num2, 50, 50);
                 
                 if (Intersects(r, gameObjects))
                 {
                     while (Intersects(r, gameObjects))
                     {
-                        num1 = this.random.Next(55, 700);
-                        num2 = this.random2.Next(55, 120);
+                        num1 = this.random.Next(0, 450);
+                        num2 = this.random2.Next(0, 120);
                         r = new Rectangle(num1, num2, 50, 50);
                         
                     }
@@ -78,38 +78,6 @@ namespace Madtrix.Controllers
             return gameObjects;
         }
 
-        public IList<Madtrix.Factories.GameObjects.GameObjectBase> ReInitialize(Madtrix.Factories.GameObjects.GameObjectBase gameObject, IList<Madtrix.Factories.GameObjects.GameObjectBase> gameObjects)
-        {
-            foreach (var item in gameObjects)
-            {
-
-                int num1 = this.random.Next(55, 700);
-                int num2 = this.random2.Next(55, 120);
-                Rectangle r = new Rectangle(num1, num2, 50, 50);
-
-                if (Intersects(r, gameObjects))
-                {
-                    while (Intersects(r, gameObjects))
-                    {
-                        num1 = this.random.Next(55, 700);
-                        num2 = this.random2.Next(55, 120);
-                        r = new Rectangle(num1, num2, 50, 50);
-                        gameObject.Location = new Point(num1, num2);
-                        break;
-                    }
-
-                }
-                else
-                {
-                    gameObject.Location = new Point(num1, num2);
-                }
-
-
-
-
-            }
-            return gameObjects;
-        }
 
         public bool Intersects(Rectangle rectangle, IList<Madtrix.Factories.GameObjects.GameObjectBase> gameObjects)
         {
@@ -123,6 +91,16 @@ namespace Madtrix.Controllers
             }
         }
 
+        public Rectangle GetRandomRectangle()
+        {
+            int num1 = this.random.Next(0, 450);
+            int num2 = this.random2.Next(0, 120);
+            return new Rectangle(num1, num2, 50, 50);
+        }
 
+
+
+
+        
     }
 }

@@ -33,15 +33,7 @@ namespace Madtrix.GameInterface
         /// </summary>
         private IList<GameObjectBase> fallingObjects = new List<GameObjectBase>();
 
-        /// <summary>
-        /// The random
-        /// </summary>
-        private Random random = new Random(80);
-
-        /// <summary>
-        /// The random2
-        /// </summary>
-        private Random random2 = new Random(90);
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -69,24 +61,21 @@ namespace Madtrix.GameInterface
         {
             foreach (var item in this.fallingObjects)
             {
-                int num1 = this.random.Next(55, 700);
-                int num2 = this.random2.Next(55, 120);
-                Rectangle r = new Rectangle(num1, num2, 50, 50);
+                var factoryController = new FactoryController();
+                Rectangle r = factoryController.GetRandomRectangle();
 
                 if (this.pictureBox1.Bounds.IntersectsWith(item.Bounds))
                 {
                     while (this.Intersects(r))
                     {
-                        num1 = this.random.Next(55, 700);
-                        num2 = this.random2.Next(55, 120);
-                        r = new Rectangle(num1, num2, 50, 50);
+                        r = factoryController.GetRandomRectangle();
                     }
 
-                    item.Location = new Point(num1, num2);
+                    item.Location = new Point(r.X, r.Y);
                 }
                 else
                 {
-                    item.Location = new Point(item.Location.X, item.Location.Y + 2);
+                    item.Location = new Point(item.Location.X, item.Location.Y + Convert.ToInt32(ConfigurationManager.AppSettings["GameSpeed"]));
                 }
             }
         }

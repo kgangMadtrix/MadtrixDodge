@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madtrix.Tests", "Madtrix.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madtrix.Controllers", "Madtrix.Controllers\Madtrix.Controllers.csproj", "{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Madtrix.Test.StoryQ", "Madtrix.Test.StoryQ\Madtrix.Test.StoryQ.csproj", "{AB76CE6B-965B-49D3-AEC8-2FCE9AA0D363}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8674D8F-17C4-4B68-81DC-1357FE29F7F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB76CE6B-965B-49D3-AEC8-2FCE9AA0D363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB76CE6B-965B-49D3-AEC8-2FCE9AA0D363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB76CE6B-965B-49D3-AEC8-2FCE9AA0D363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB76CE6B-965B-49D3-AEC8-2FCE9AA0D363}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

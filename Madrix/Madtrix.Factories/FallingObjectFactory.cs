@@ -38,7 +38,7 @@ namespace Madtrix.Factories
             var fallingObject = new Raindrop();
             fallingObject.Size = new System.Drawing.Size(50, 50);
 
-            fallingObject.ImageLocation = @"C:\Users\Madtrix\Documents\Visual Studio 2012\Projects\Madrix\Madtrix.GameInterface\images\enemy.png";
+            fallingObject.ImageLocation = @"..\..\images\enemy.png";
             return fallingObject;
         }
     }
