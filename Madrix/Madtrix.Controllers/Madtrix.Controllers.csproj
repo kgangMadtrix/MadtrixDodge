@@ -43,7 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FactoryController.cs" />
+    <Compile Include="GameController.cs" />
     <Compile Include="IFactoryController.cs" />
+    <Compile Include="IGameController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

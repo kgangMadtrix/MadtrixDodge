@@ -16,13 +16,13 @@ namespace Madtrix.Factories
         /// <summary>
         /// Creates the game object.
         /// </summary>
-        /// <param name="fallingObjectTypeId">The falling object type identifier.</param>
+        /// <param name="objectTypeId">The falling object type identifier.</param>
         /// <returns>A game object base</returns>
-        public GameObjects.GameObjectBase CreateGameObject(int fallingObjectTypeId)
+        public GameObjects.GameObjectBase CreateGameObject(int objectTypeId)
         {
-            switch (fallingObjectTypeId)
+            switch (objectTypeId)
             {
-                case (int)FallingObjectType.Raindrop:
+                case (int)ObjectType.Raindrop:
                     return this.CreateRaindrop();
                 default:
                     return null;
@@ -37,8 +37,9 @@ namespace Madtrix.Factories
         {
             var fallingObject = new Raindrop();
             fallingObject.Size = new System.Drawing.Size(50, 50);
-
+            fallingObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             fallingObject.ImageLocation = @"..\..\images\enemy.png";
+            fallingObject.Name = "Falling";
             return fallingObject;
         }
     }

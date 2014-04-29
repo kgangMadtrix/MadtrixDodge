@@ -32,7 +32,7 @@ namespace Madtrix.Tests.FallingObject
         [When(@"I create a raindrop")]
         public void WhenICreateARaindrop()
         {
-            fallingGameObject = fallingObjectFactory.CreateGameObject((int)FallingObjectType.Raindrop);
+            fallingGameObject = fallingObjectFactory.CreateGameObject((int)ObjectType.Raindrop);
         }
 
         [Then(@"the result should be a rain drop on the screen")]

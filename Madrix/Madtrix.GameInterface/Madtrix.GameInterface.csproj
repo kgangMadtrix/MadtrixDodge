@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="images\mandodger.png" />
     <None Include="images\clouds.png" />
     <Content Include="images\enemy.png" />
   </ItemGroup>

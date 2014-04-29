@@ -53,6 +53,9 @@
     <Compile Include="GameObjects\GameObjectBase.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="GameObjects\Human.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="GameObjects\IGameObject.cs" />
     <Compile Include="GameObjects\Raindrop.cs">
       <SubType>Component</SubType>

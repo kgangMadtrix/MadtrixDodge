@@ -23,7 +23,7 @@ namespace Madtrix.Tests
         public void Then_return_a_raindrop_object_based_on_my_FallingObjectTypeRaindropId_parameter()
         {
             var fallingObjectFactory = new FallingObjectFactory();
-            var fallingGameObject = fallingObjectFactory.CreateGameObject((int)FallingObjectType.Raindrop);
+            var fallingGameObject = fallingObjectFactory.CreateGameObject((int)ObjectType.Raindrop);
             Assert.IsInstanceOf(typeof(Raindrop), fallingGameObject, "The falling object factory did not return a raindrop");
         }
 
@@ -34,7 +34,7 @@ namespace Madtrix.Tests
         public void Then_do_not_return_a_Fridge_object_based_on_my_FallingObjectTypeRaindropId_parameter()
         {
             var fallingObjectFactory = new FallingObjectFactory();
-            var fallingGameObject = fallingObjectFactory.CreateGameObject((int)FallingObjectType.Raindrop);
+            var fallingGameObject = fallingObjectFactory.CreateGameObject((int)ObjectType.Raindrop);
             Assert.IsNotInstanceOf(typeof(Fridge), fallingGameObject, "The falling object factory did not return a fridge");
         }
 

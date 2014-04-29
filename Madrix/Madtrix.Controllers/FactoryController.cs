@@ -36,7 +36,7 @@ namespace Madtrix.Controllers
         }
 
 
-        public IList<Factories.GameObjects.GameObjectBase> CreateGameObjects(IGameObjectFactory gameFactory, int objectTypeId, int numberOfFallingObjects)
+        public IList<Factories.GameObjects.GameObjectBase> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId, int numberOfFallingObjects)
         {
             var gameObjects = new List<Factories.GameObjects.GameObjectBase>();
 
@@ -44,6 +44,18 @@ namespace Madtrix.Controllers
             {
                 var gameObject = gameFactory.CreateGameObject(objectTypeId);
                     gameObjects.Add(gameObject);  
+            }
+            return Initialize(gameObjects);
+        }
+
+        public IList<Factories.GameObjects.GameObjectBase> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId)
+        {
+            var gameObjects = new List<Factories.GameObjects.GameObjectBase>();
+            int numberOfFallingObjects = Convert.ToInt32(ConfigurationManager.AppSettings["NumberOfFallingObjects"]);
+            for (int i = 0; i < numberOfFallingObjects; i++)
+            {
+                var gameObject = gameFactory.CreateGameObject(objectTypeId);
+                gameObjects.Add(gameObject);
             }
             return Initialize(gameObjects);
         }
@@ -101,6 +113,19 @@ namespace Madtrix.Controllers
 
 
 
-        
+
+
+
+        public IGameObjectFactory GetFallingObjectFactory()
+        {
+            var factoryController = new FactoryController();
+            return factoryController.Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["FallingObjectFactoryTypeName"]);
+        }
+
+        public IGameObjectFactory GetDodgingObjectFactory()
+        {
+            var factoryController = new FactoryController();
+            return factoryController.Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["DodgingObjectFactoryTypeName"]);
+        }
     }
 }

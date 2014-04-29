@@ -8,11 +8,16 @@ namespace Madtrix.Factories
     /// <summary>
     /// This are my FallingObjectTypes
     /// </summary>
-    public enum FallingObjectType
+    public enum ObjectType
     {
         /// <summary>
         /// The raindrop
         /// </summary>
-        Raindrop = 1
+        Raindrop = 1,
+
+        /// <summary>
+        /// The human
+        /// </summary>
+        Human = 1
     }
 }
