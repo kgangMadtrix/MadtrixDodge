@@ -15,7 +15,7 @@ namespace Madtrix.Tests.FallingObject
     public class Steps
     {
         IGameObjectFactory fallingObjectFactory;
-        GameObjectBase fallingGameObject;
+        IGameObject fallingGameObject;
 
         //[BeforeScenario]
         //public void CreateFallingObjectFactory()

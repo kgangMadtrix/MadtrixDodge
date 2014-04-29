@@ -18,7 +18,7 @@ namespace Madtrix.Factories
         /// </summary>
         /// <param name="objectTypeId">The falling object type identifier.</param>
         /// <returns>A game object base</returns>
-        public GameObjects.GameObjectBase CreateGameObject(int objectTypeId)
+        public GameObjects.IGameObject CreateGameObject(int objectTypeId)
         {
             switch (objectTypeId)
             {
@@ -33,7 +33,7 @@ namespace Madtrix.Factories
         /// Creates the raindrop.
         /// </summary>
         /// <returns>A game object base</returns>
-        private GameObjects.GameObjectBase CreateRaindrop()
+        private GameObjects.IGameObject CreateRaindrop()
         {
             var fallingObject = new Raindrop();
             fallingObject.Size = new System.Drawing.Size(50, 50);

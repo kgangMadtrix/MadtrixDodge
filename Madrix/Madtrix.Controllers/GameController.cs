@@ -13,7 +13,7 @@ namespace Madtrix.Controllers
     public class GameController : IGameController
     {
 
-        public bool MonitorCrashes(IList<Factories.GameObjects.GameObjectBase> fallingObjects, Factories.GameObjects.GameObjectBase dodgingGameObject, System.Windows.Forms.PictureBox Ground)
+        public bool MonitorCrashes(IList<Factories.GameObjects.IGameObject> fallingObjects, Factories.GameObjects.IGameObject dodgingGameObject, System.Windows.Forms.PictureBox Ground)
         {
             bool crashed = false;
             foreach (var item in fallingObjects)
@@ -51,7 +51,7 @@ namespace Madtrix.Controllers
             return crashed;
         }
 
-        private bool Intersects(Rectangle r, IList<Factories.GameObjects.GameObjectBase> fallingObjects)
+        private bool Intersects(Rectangle r, IList<Factories.GameObjects.IGameObject> fallingObjects)
         {
             if (fallingObjects.Where(a => a.Bounds.IntersectsWith(r)).Count() > 0)
             {
@@ -64,7 +64,7 @@ namespace Madtrix.Controllers
         }
 
 
-        public void KeyDown(object sender, System.Windows.Forms.KeyEventArgs e, GameObjectBase dodgingGameObject)
+        public void KeyDown(object sender, System.Windows.Forms.KeyEventArgs e, IGameObject dodgingGameObject)
         {
             //keep y position
             var Y = 500;
@@ -95,5 +95,8 @@ namespace Madtrix.Controllers
                 }
             }
         }
+
+
+        
     }
 }

@@ -10,8 +10,8 @@ namespace Madtrix.Controllers
 {
     public interface IGameController
     {
-        bool MonitorCrashes(IList<GameObjectBase> fallingObjects, GameObjectBase dodgingGameObject, PictureBox Ground);
+        bool MonitorCrashes(IList<IGameObject> fallingObjects, IGameObject dodgingGameObject, PictureBox Ground);
 
-        void KeyDown(object sender, KeyEventArgs e, GameObjectBase dodgingGameObject);
+        void KeyDown(object sender, KeyEventArgs e, IGameObject dodgingGameObject);
     }
 }

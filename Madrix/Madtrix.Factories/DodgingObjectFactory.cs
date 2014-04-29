@@ -18,7 +18,7 @@ namespace Madtrix.Factories
         /// </summary>
         /// <param name="fallingObjectType">Type of the falling object.</param>
         /// <returns>Return a game object</returns>
-        public GameObjects.GameObjectBase CreateGameObject(int objectType)
+        public GameObjects.IGameObject CreateGameObject(int objectType)
         {
             switch (objectType)
             {
@@ -33,7 +33,7 @@ namespace Madtrix.Factories
         /// Creates the human.
         /// </summary>
         /// <returns>A game object base</returns>
-        private GameObjects.GameObjectBase CreateHuman()
+        private GameObjects.IGameObject CreateHuman()
         {
             var dodgingObject = new Human();
             dodgingObject.Name = "Dodger";

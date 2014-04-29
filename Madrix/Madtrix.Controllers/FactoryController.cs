@@ -30,15 +30,15 @@ namespace Madtrix.Controllers
         }
 
 
-        public Factories.GameObjects.GameObjectBase CreateGameObject(IGameObjectFactory gameFactory, int objectType)
+        public Factories.GameObjects.IGameObject CreateGameObject(IGameObjectFactory gameFactory, int objectType)
         {
             return gameFactory.CreateGameObject(objectType);
         }
 
 
-        public IList<Factories.GameObjects.GameObjectBase> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId, int numberOfFallingObjects)
+        public IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId, int numberOfFallingObjects)
         {
-            var gameObjects = new List<Factories.GameObjects.GameObjectBase>();
+            var gameObjects = new List<Factories.GameObjects.IGameObject>();
 
             for (int i = 0; i < numberOfFallingObjects; i++)
             {
@@ -48,9 +48,9 @@ namespace Madtrix.Controllers
             return Initialize(gameObjects);
         }
 
-        public IList<Factories.GameObjects.GameObjectBase> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId)
+        public IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId)
         {
-            var gameObjects = new List<Factories.GameObjects.GameObjectBase>();
+            var gameObjects = new List<Factories.GameObjects.IGameObject>();
             int numberOfFallingObjects = Convert.ToInt32(ConfigurationManager.AppSettings["NumberOfFallingObjects"]);
             for (int i = 0; i < numberOfFallingObjects; i++)
             {
@@ -60,7 +60,7 @@ namespace Madtrix.Controllers
             return Initialize(gameObjects);
         }
 
-        public IList<Madtrix.Factories.GameObjects.GameObjectBase> Initialize(IList<Madtrix.Factories.GameObjects.GameObjectBase> gameObjects)
+        public IList<Madtrix.Factories.GameObjects.IGameObject> Initialize(IList<Madtrix.Factories.GameObjects.IGameObject> gameObjects)
         {
             foreach (var item in gameObjects)
             {
@@ -91,7 +91,7 @@ namespace Madtrix.Controllers
         }
 
 
-        public bool Intersects(Rectangle rectangle, IList<Madtrix.Factories.GameObjects.GameObjectBase> gameObjects)
+        public bool Intersects(Rectangle rectangle, IList<Madtrix.Factories.GameObjects.IGameObject> gameObjects)
         {
             if (gameObjects.Where(a => a.Bounds.IntersectsWith(rectangle)).Count() > 0)
             {
@@ -127,5 +127,10 @@ namespace Madtrix.Controllers
             var factoryController = new FactoryController();
             return factoryController.Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["DodgingObjectFactoryTypeName"]);
         }
+
+
+
+
+
     }
 }

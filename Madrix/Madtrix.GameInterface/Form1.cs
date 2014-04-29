@@ -31,12 +31,12 @@ namespace Madtrix.GameInterface
         /// <summary>
         /// The falling objects
         /// </summary>
-        private IList<GameObjectBase> fallingObjects = new List<GameObjectBase>();
+        private IList<IGameObject> fallingObjects = new List<IGameObject>();
 
         /// <summary>
         /// The dodging object
         /// </summary>
-        private GameObjectBase dodgingGameObject = new GameObjectBase();
+        private IGameObject dodgingGameObject = new GameObjectBase();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -49,11 +49,11 @@ namespace Madtrix.GameInterface
             IGameObjectFactory fallingObjectfactory = factoryController.GetFallingObjectFactory();
             IGameObjectFactory dodgingObjectfactory = factoryController.GetDodgingObjectFactory();
             this.fallingObjects = factoryController.CreateFallingGameObjects(fallingObjectfactory, (int)ObjectType.Raindrop);
-            this.dodgingGameObject = factoryController.CreateGameObject(dodgingObjectfactory, (int)ObjectType.Human);
-            this.Controls.Add(dodgingGameObject);
+            this.dodgingGameObject = (GameObjectBase)factoryController.CreateGameObject(dodgingObjectfactory, (int)ObjectType.Human);
+            this.Controls.Add(dodgingGameObject as Control);
             foreach (var item in this.fallingObjects)
             {
-                this.Controls.Add(item);
+                this.Controls.Add(item as Control);
             }
 
             this.timer1.Start();
