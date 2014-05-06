@@ -11,15 +11,11 @@ namespace Madtrix.Controllers
 {
     public interface IFactoryController
     {
-        IGameObjectFactory Getfactory(string factoryDll, string typeName);
+        void Inject(IGameObjectFactory gameObjectFactory);
 
-        IGameObjectFactory GetFallingObjectFactory();
+        IGameObject CreateGameObject(int objectTypeId);
 
-        IGameObjectFactory GetDodgingObjectFactory();
-
-        IGameObject CreateGameObject(IGameObjectFactory gameFactory, int objectTypeId);
-
-        IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId, int numberOfFallingObjects);
+        IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(int objectTypeId, int numberOfFallingObjects);
 
         IList<Madtrix.Factories.GameObjects.IGameObject> Initialize(IList<Madtrix.Factories.GameObjects.IGameObject> gameObjects);
 

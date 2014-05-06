@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -39,7 +40,7 @@ namespace Madtrix.Factories
             dodgingObject.Name = "Dodger";
             dodgingObject.Size = new System.Drawing.Size(25, 40);
             dodgingObject.Location = new System.Drawing.Point(216, 500);
-            dodgingObject.ImageLocation = @"..\..\images\mandodger.png";
+            dodgingObject.ImageLocation = ConfigurationManager.AppSettings["dodgingobjectpic"];
             dodgingObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             return dodgingObject;
         }

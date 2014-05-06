@@ -43,13 +43,47 @@ namespace Madtrix.GameInterface
             
         }
 
+        /// <summary>
+        /// Getfactories the specified factory DLL.
+        /// </summary>
+        /// <param name="factoryDll">The factory DLL.</param>
+        /// <param name="typeName">Name of the type.</param>
+        /// <returns></returns>
+        Factories.IGameObjectFactory Getfactory(string factoryDll, string typeName)
+        {
+            var assembly = Assembly.LoadFrom(factoryDll);
+            return (IGameObjectFactory)assembly.CreateInstance(typeName);
+        }
+
+        /// <summary>
+        /// Gets the falling object factory.
+        /// </summary>
+        /// <returns></returns>
+        IGameObjectFactory GetFallingObjectFactory()
+        {
+            return Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["FallingObjectFactoryTypeName"]);
+        }
+
+        /// <summary>
+        /// Gets the dodging object factory.
+        /// </summary>
+        /// <returns></returns>
+        IGameObjectFactory GetDodgingObjectFactory()
+        {
+            return Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["DodgingObjectFactoryTypeName"]);
+        }
+
         private void Initialise()
         {
             var factoryController = new FactoryController();
-            IGameObjectFactory fallingObjectfactory = factoryController.GetFallingObjectFactory();
-            IGameObjectFactory dodgingObjectfactory = factoryController.GetDodgingObjectFactory();
-            this.fallingObjects = factoryController.CreateFallingGameObjects(fallingObjectfactory, (int)ObjectType.Raindrop);
-            this.dodgingGameObject = (GameObjectBase)factoryController.CreateGameObject(dodgingObjectfactory, (int)ObjectType.Human);
+            IGameObjectFactory fallingObjectfactory = GetFallingObjectFactory();
+            IGameObjectFactory dodgingObjectfactory = GetDodgingObjectFactory();
+            //interface injection
+            factoryController.Inject(fallingObjectfactory);
+            this.fallingObjects = factoryController.CreateFallingGameObjects((int)ObjectType.Raindrop);
+            //interface injection - this is more expressive that you have to inject igameobject factory
+            factoryController.Inject(dodgingObjectfactory);
+            this.dodgingGameObject = (GameObjectBase)factoryController.CreateGameObject((int)ObjectType.Human);
             this.Controls.Add(dodgingGameObject as Control);
             foreach (var item in this.fallingObjects)
             {

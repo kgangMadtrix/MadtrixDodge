@@ -20,11 +20,6 @@ namespace Madtrix.Controllers
             {
                 if (dodgingGameObject.Bounds.IntersectsWith(item.Bounds))
                 {
-                    foreach (var fallingobject in fallingObjects)
-                    {
-                        //this.Controls.RemoveByKey(fallingobject.Name);
-                    }
-                    //this.Controls.RemoveByKey(this.dodgingGameObject.Name);
                     crashed = true;
                     break ;
                 }
@@ -69,7 +64,7 @@ namespace Madtrix.Controllers
             //keep y position
             var Y = 500;
             var X = dodgingGameObject.Location.X;
-            if (e.KeyCode.ToString().Equals(ConfigurationManager.AppSettings["MoveLeftKey"],StringComparison.OrdinalIgnoreCase))
+            if (e.KeyCode.ToString().Equals(ConfigurationManager.AppSettings["Player1MoveLeftKey"], StringComparison.OrdinalIgnoreCase))
             {
                 if (dodgingGameObject.Location.X <= 530 && dodgingGameObject.Location.X >= 10)
                 {
@@ -82,7 +77,7 @@ namespace Madtrix.Controllers
                 }
             }
 
-            if (e.KeyCode.ToString().Equals(ConfigurationManager.AppSettings["MoveRightKey"], StringComparison.OrdinalIgnoreCase))
+            if (e.KeyCode.ToString().Equals(ConfigurationManager.AppSettings["Player1MoveRightKey"], StringComparison.OrdinalIgnoreCase))
             {
                 //and player is within the forms bounds
                 if (dodgingGameObject.Location.X <= 530 && dodgingGameObject.Location.X >= 10)

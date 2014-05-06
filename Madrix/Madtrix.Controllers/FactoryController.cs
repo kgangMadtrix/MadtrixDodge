@@ -23,43 +23,88 @@ namespace Madtrix.Controllers
         /// </summary>
         private Random random2 = new Random(90);
 
-        public Factories.IGameObjectFactory Getfactory(string factoryDll, string typeName)
+        /// <summary>
+        /// The game object factory
+        /// </summary>
+        private IGameObjectFactory gameObjectFactory;
+
+        /// <summary>
+        /// Injects the specified game object factory.
+        /// </summary>
+        /// <param name="gameObjectFactory">The game object factory.</param>
+        public void Inject(IGameObjectFactory gameObjectFactory)
         {
-            var assembly = Assembly.LoadFrom(factoryDll);
-            return (IGameObjectFactory)assembly.CreateInstance(typeName);
+            this.gameObjectFactory = gameObjectFactory;
+        }
+
+        
+
+        /// <summary>
+        /// Creates the game object.
+        /// </summary>
+        /// <param name="gameFactory">The game factory.</param>
+        /// <param name="objectType">Type of the object.</param>
+        /// <returns></returns>
+        public Factories.GameObjects.IGameObject CreateGameObject(int objectType)
+        {
+            return this.gameObjectFactory.CreateGameObject(objectType);
+        }
+
+        public IList<Factories.GameObjects.IGameObject> CreateDodgingGameObjects(int objectType, int numberObjects)
+        {
+            var gameObjects = new List<Factories.GameObjects.IGameObject>();
+
+            for (int i = 0; i < numberObjects; i++)
+            { 
+                var gameObject = this.gameObjectFactory.CreateGameObject(objectType);
+                gameObjects.Add(gameObject);
+            }
+            return gameObjects;
         }
 
 
-        public Factories.GameObjects.IGameObject CreateGameObject(IGameObjectFactory gameFactory, int objectType)
-        {
-            return gameFactory.CreateGameObject(objectType);
-        }
-
-
-        public IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId, int numberOfFallingObjects)
+        /// <summary>
+        /// Creates the falling game objects.
+        /// </summary>
+        /// <param name="gameFactory">The game factory.</param>
+        /// <param name="objectTypeId">The object type identifier.</param>
+        /// <param name="numberOfFallingObjects">The number of falling objects.</param>
+        /// <returns></returns>
+        public IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(int objectTypeId, int numberOfFallingObjects)
         {
             var gameObjects = new List<Factories.GameObjects.IGameObject>();
 
             for (int i = 0; i < numberOfFallingObjects; i++)
             {
-                var gameObject = gameFactory.CreateGameObject(objectTypeId);
+                var gameObject = this.gameObjectFactory.CreateGameObject(objectTypeId);
                     gameObjects.Add(gameObject);  
             }
             return Initialize(gameObjects);
         }
 
-        public IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(IGameObjectFactory gameFactory, int objectTypeId)
+        /// <summary>
+        /// Creates the falling game objects.
+        /// </summary>
+        /// <param name="gameFactory">The game factory.</param>
+        /// <param name="objectTypeId">The object type identifier.</param>
+        /// <returns></returns>
+        public IList<Factories.GameObjects.IGameObject> CreateFallingGameObjects(int objectTypeId)
         {
             var gameObjects = new List<Factories.GameObjects.IGameObject>();
             int numberOfFallingObjects = Convert.ToInt32(ConfigurationManager.AppSettings["NumberOfFallingObjects"]);
             for (int i = 0; i < numberOfFallingObjects; i++)
             {
-                var gameObject = gameFactory.CreateGameObject(objectTypeId);
+                var gameObject = this.gameObjectFactory.CreateGameObject(objectTypeId);
                 gameObjects.Add(gameObject);
             }
             return Initialize(gameObjects);
         }
 
+        /// <summary>
+        /// Initializes the specified game objects.
+        /// </summary>
+        /// <param name="gameObjects">The game objects.</param>
+        /// <returns></returns>
         public IList<Madtrix.Factories.GameObjects.IGameObject> Initialize(IList<Madtrix.Factories.GameObjects.IGameObject> gameObjects)
         {
             foreach (var item in gameObjects)
@@ -91,6 +136,12 @@ namespace Madtrix.Controllers
         }
 
 
+        /// <summary>
+        /// Intersectses the specified rectangle.
+        /// </summary>
+        /// <param name="rectangle">The rectangle.</param>
+        /// <param name="gameObjects">The game objects.</param>
+        /// <returns></returns>
         public bool Intersects(Rectangle rectangle, IList<Madtrix.Factories.GameObjects.IGameObject> gameObjects)
         {
             if (gameObjects.Where(a => a.Bounds.IntersectsWith(rectangle)).Count() > 0)
@@ -103,6 +154,10 @@ namespace Madtrix.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets the random rectangle.
+        /// </summary>
+        /// <returns></returns>
         public Rectangle GetRandomRectangle()
         {
             int num1 = this.random.Next(0, 450);
@@ -116,17 +171,7 @@ namespace Madtrix.Controllers
 
 
 
-        public IGameObjectFactory GetFallingObjectFactory()
-        {
-            var factoryController = new FactoryController();
-            return factoryController.Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["FallingObjectFactoryTypeName"]);
-        }
-
-        public IGameObjectFactory GetDodgingObjectFactory()
-        {
-            var factoryController = new FactoryController();
-            return factoryController.Getfactory(ConfigurationManager.AppSettings["FactoriesAssembly"], ConfigurationManager.AppSettings["DodgingObjectFactoryTypeName"]);
-        }
+        
 
 
 

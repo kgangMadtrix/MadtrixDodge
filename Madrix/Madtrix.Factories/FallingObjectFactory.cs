@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,7 @@ namespace Madtrix.Factories
             var fallingObject = new Raindrop();
             fallingObject.Size = new System.Drawing.Size(50, 50);
             fallingObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            fallingObject.ImageLocation = @"..\..\images\enemy.png";
+            fallingObject.ImageLocation = ConfigurationManager.AppSettings["Fallingobjectspic"];
             fallingObject.Name = "Falling";
             return fallingObject;
         }
