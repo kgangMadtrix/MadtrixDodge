@@ -164,18 +164,5 @@ namespace Madtrix.Controllers
             int num2 = this.random2.Next(0, 120);
             return new Rectangle(num1, num2, 50, 50);
         }
-
-
-
-
-
-
-
-        
-
-
-
-
-
     }
 }
